@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{'msg.mhg.mss'}}</p>
+        <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <router-view></router-view>
+    </div>
+
+    <template id="login">
+        <h1>我是登录组件</h1>
+        
+    </template>
+
+    <template id="register">
+        <h1>我是注册组件</h1>
+        
+    </template>
+
+    <script>
+      var login={
+          template:"#login"
+      }
+
+      var register={
+        template:"#register"
+      }
+
+
+      var router=new VueRouter({
+          routes:[
+              {path:"/",redirect:"/login"},
+              {path:"/login",component:login},
+              {path:"/register",component:register}
+          ]
+      })
+      var vm=new Vue({
+          el:"#app",
+          data:{
+             'msg.mhg.mss':"文明的命名"
+          },
+          methods:{
+             
+          },
+          router,
+          watch:{
+                '$route.path':function(newVal,oldVal){
+                    console.log(newVal+"---"+oldVal)
+              }
+          },
+          computed:{ 
+              
+          }
+      })
+    </script>
+</body>
+</html>

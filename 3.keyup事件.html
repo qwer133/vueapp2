@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="one" @keyup="result">+
+        <input type="text" v-model="tow" @keyup="result">=
+        <input type="text" v-model="first">
+    </div>
+
+    <script>
+      var vm=new Vue({
+          el:"#app",
+          data:{
+              one:"",
+              tow:"",
+              first:""
+          },
+          methods:{
+              result(){
+                  this.first=this.one+"--"+this.tow
+              }
+          }
+      })
+    </script>
+</body>
+</html>
